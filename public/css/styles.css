@@ -56,6 +56,10 @@ button:disabled {
     background: #7c5cbf94;
 }
 
+#send-file{
+    margin-left: 12px;
+}
+
 /* Join Page Styles */
 
 .centered-form {

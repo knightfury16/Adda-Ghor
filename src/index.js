@@ -96,6 +96,13 @@ io.on('connection', (socket) => {
 		callback();
 	})
 
+
+	// *File sharing
+	socket.on('file-raw',({metadata, buffer}) => {
+		const user = getUser(socket.id);
+		socket.in(user.room).emit('fs-share',{metadata,buffer});
+	});
+
 })
 
 
