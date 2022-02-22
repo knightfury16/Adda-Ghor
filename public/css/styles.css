@@ -56,6 +56,18 @@ button:disabled {
     background: #7c5cbf94;
 }
 
+#send-file{
+    margin-left: 12px;
+}
+
+.file-share-anchor{
+    text-decoration: underline;
+}
+
+.file-share-anchor:hover {
+    cursor: pointer;
+}
+
 /* Join Page Styles */
 
 .centered-form {
