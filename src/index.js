@@ -49,8 +49,6 @@ io.on('connection', (socket) => {
 	})
 
 
-
-
 	socket.on('sendMessage', (msg,callback) => {
 
 		const user = getUser(socket.id);
