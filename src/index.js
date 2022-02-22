@@ -3,7 +3,7 @@ const path = require('path');
 const http =require('http');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
-const {generateMessage,generateLocationMessage} = require('./utils/message');
+const {generateMessage,generateLocationMessage,generateFileShareMessage} = require('./utils/message');
 const {addUser,removeUser,getUser,getUsersInRoom} = require('./utils/users');
 
 const app =  express();
@@ -98,9 +98,15 @@ io.on('connection', (socket) => {
 
 
 	// *File sharing
-	socket.on('file-raw',({metadata, buffer}) => {
+
+	socket.on('fs-begin', () => {
 		const user = getUser(socket.id);
-		socket.in(user.room).emit('fs-share',{metadata,buffer});
+		io.to(user.room).emit('fs-reset');
+	})
+
+	socket.on('file-raw',(data) => {
+		const user = getUser(socket.id);
+		io.to(user.room).emit('fs-share', generateFileShareMessage(user.username,data));
 	});
 
 })

@@ -60,6 +60,14 @@ button:disabled {
     margin-left: 12px;
 }
 
+.file-share-anchor{
+    text-decoration: underline;
+}
+
+.file-share-anchor:hover {
+    cursor: pointer;
+}
+
 /* Join Page Styles */
 
 .centered-form {
